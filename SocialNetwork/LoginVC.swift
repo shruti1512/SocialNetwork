@@ -23,7 +23,7 @@ class LoginVC: UIViewController {
             // User is logged in, use 'accessToken' here.
         }
         else {
-            //addFBLoginButton()
+            addFBLoginButton()
         }
     }
 
