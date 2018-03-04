@@ -1,5 +1,5 @@
 //
-//  HeaderView.swift
+//  ViewHeader.swift
 //  SocialNetwork
 //
 //  Created by Shruti Sharma on 3/3/18.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class HeaderView: UIView, DropShadow {
+class ViewHeader: UIView, DropShadow {
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         addDropShadow()
     }
 }

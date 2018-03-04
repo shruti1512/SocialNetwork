@@ -13,6 +13,11 @@
 		332112F52040E5D5008F99F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 332112F42040E5D5008F99F7 /* Assets.xcassets */; };
 		332112F82040E5D5008F99F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332112F62040E5D5008F99F7 /* LaunchScreen.storyboard */; };
 		332113002040E6A1008F99F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 332112FF2040E6A1008F99F7 /* GoogleService-Info.plist */; };
+		335E0803204B088E00608C66 /* DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E0802204B088E00608C66 /* DropShadow.swift */; };
+		335E0808204B10D900608C66 /* ViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E0807204B10D900608C66 /* ViewHeader.swift */; };
+		335E080A204B123600608C66 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E0809204B123600608C66 /* CustomLoginButton.swift */; };
+		335E080C204B25E200608C66 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E080B204B25E200608C66 /* CustomTextField.swift */; };
+		335E080F204B267300608C66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E080E204B267300608C66 /* Constants.swift */; };
 		BF750695828CE63BFDE5F06F /* Pods_SocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C64FB71011AAF42CAA8CD /* Pods_SocialNetwork.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +31,11 @@
 		332112F72040E5D5008F99F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		332112F92040E5D5008F99F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		332112FF2040E6A1008F99F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		335E0802204B088E00608C66 /* DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShadow.swift; sourceTree = "<group>"; };
+		335E0807204B10D900608C66 /* ViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeader.swift; sourceTree = "<group>"; };
+		335E0809204B123600608C66 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		335E080B204B25E200608C66 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		335E080E204B267300608C66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		814C6926850F80F3C15552C1 /* Pods-SocialNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.debug.xcconfig"; sourceTree = "<group>"; };
 		8FC8942F36DDD012BC664475 /* Pods-SocialNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +81,8 @@
 		332112EC2040E5D5008F99F7 /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				335E080D204B266500608C66 /* Utils */,
+				335E0801204B084600608C66 /* Protocol */,
 				33A786BA2040E938000B6EE0 /* Model */,
 				33A786BB2040E93E000B6EE0 /* View */,
 				33A786BC2040E945000B6EE0 /* Controller */,
@@ -84,6 +96,22 @@
 			path = SocialNetwork;
 			sourceTree = "<group>";
 		};
+		335E0801204B084600608C66 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				335E0802204B088E00608C66 /* DropShadow.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		335E080D204B266500608C66 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				335E080E204B267300608C66 /* Constants.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		33A786BA2040E938000B6EE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +122,9 @@
 		33A786BB2040E93E000B6EE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				335E0807204B10D900608C66 /* ViewHeader.swift */,
+				335E0809204B123600608C66 /* CustomLoginButton.swift */,
+				335E080B204B25E200608C66 /* CustomTextField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -268,7 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				332112F02040E5D5008F99F7 /* LoginVC.swift in Sources */,
+				335E0803204B088E00608C66 /* DropShadow.swift in Sources */,
+				335E080C204B25E200608C66 /* CustomTextField.swift in Sources */,
 				332112EE2040E5D5008F99F7 /* AppDelegate.swift in Sources */,
+				335E080F204B267300608C66 /* Constants.swift in Sources */,
+				335E0808204B10D900608C66 /* ViewHeader.swift in Sources */,
+				335E080A204B123600608C66 /* CustomLoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

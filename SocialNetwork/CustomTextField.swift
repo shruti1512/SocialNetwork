@@ -10,12 +10,29 @@ import UIKit
 
 class CustomTextField: UITextField {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func awakeFromNib() {
+        borderStyle = .none
+        layer.cornerRadius = 2.0
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor(red: SHADOW_GREY, green: SHADOW_GREY, blue: SHADOW_GREY, alpha: 0.2).cgColor
     }
-    */
 
+    func changeBorderColor(isError: Bool) {
+        if isError {
+            layer.borderColor = UIColor.red.cgColor
+        }
+        else {
+            layer.borderColor = UIColor(red: SHADOW_GREY, green: SHADOW_GREY, blue: SHADOW_GREY, alpha: 0.2).cgColor
+        }
+    }
+    
+    /* Add padding to the placeholder text */
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 10.0, dy: 5.0)
+    }
+    
+    /* Add padding to the editable text */
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 10.0, dy: 5.0)
+    }
 }

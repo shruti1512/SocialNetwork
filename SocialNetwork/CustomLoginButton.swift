@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ButtonFacebookLogin: UIButton, DropShadow {
+class CustomLoginButton: UIButton, DropShadow {
 
+    @IBInspectable var isRounded: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         addDropShadow()
@@ -18,10 +20,21 @@ class ButtonFacebookLogin: UIButton, DropShadow {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView?.contentMode = .scaleAspectFit
-        makeBtnRounded()
+        
+        if isRounded {
+            makeBtnRounded()
+        }
+        else {
+            addCornerRadiusToBtn()
+        }
     }
     
     func makeBtnRounded() {
         layer.cornerRadius = self.frame.size.width/2
     }
+    
+    func addCornerRadiusToBtn() {
+        layer.cornerRadius = 2.0
+    }
+    
 }
