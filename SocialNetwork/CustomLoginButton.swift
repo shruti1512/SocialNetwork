@@ -21,6 +21,7 @@ class CustomLoginButton: UIButton, DropShadow {
         super.layoutSubviews()
         imageView?.contentMode = .scaleAspectFit
         
+        //we use this method because it is this method where we get the frame of the view after it has been set
         if isRounded {
             makeBtnRounded()
         }
