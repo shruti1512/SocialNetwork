@@ -10,6 +10,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 import FirebaseAuth
+import KeychainSwift
 
 class LoginVC: UIViewController {
 
@@ -31,6 +32,14 @@ class LoginVC: UIViewController {
         addTapGestureOnScrollView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        let keychain = KeychainSwift()
+        let userID = keychain.get(KEY_UID)
+        if userID != nil {
+            print("userID: \(String(describing: userID))")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -112,7 +121,7 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: - Login Button Tap Events
+    //MARK: - Login With Email And Facebook Events
 
     @IBAction func signInBtnTapped(_ sender: Any) {
         
@@ -132,7 +141,7 @@ class LoginVC: UIViewController {
                     switch errCode {
                     case .userNotFound:
                         print("this email does not exist so first create an account for this user")
-                        self.createAccountForUser(withEmail: email, pswd: pswd)
+                        self.createAccountForFirstTimeUser(withEmail: email, pswd: pswd)
                     case .wrongPassword:
                         print("Sorry, either your e-mail or password didn't match what we have on file. Try it again?" )
                     default:
@@ -143,20 +152,25 @@ class LoginVC: UIViewController {
             }
             else {
                 if let userObj = user {
+                    print("User signed-in successfuly with email and password")
                     print("user name: \(String(describing: userObj.displayName))")
                     print("user email: \(String(describing: userObj.email))")
+                    guard let user = user else {return}
+                    self.storeUserIDInKeyChain(userID: user.uid)
                 }
             }
         }
     }
     
-    func createAccountForUser(withEmail email: String, pswd: String) {
+    func createAccountForFirstTimeUser(withEmail email: String, pswd: String) {
     
         Auth.auth().createUser(withEmail: email, password: pswd, completion: { (user, error) in
             if error == nil {
                 print("New User account created and signed-in successfuly")
                 print("user name: \(String(describing: user?.displayName))")
                 print("user email: \(String(describing: user?.email))")
+                guard let user = user else {return}
+                self.storeUserIDInKeyChain(userID: user.uid)
             }
             else {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
@@ -185,23 +199,33 @@ class LoginVC: UIViewController {
                  the facebook access token for the signed-in user is used to create a Firebase credential
                  */
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-                self.firebaseAuthWithFacebook(credential)
+                self.firebaseAuthWithCredential(credential)
             }
         }
     }
 
-    //MARK: - Authenticate Facebook Credential with Firebase
-    func firebaseAuthWithFacebook(_ credential: AuthCredential) {
+    //MARK: - Authenticate with Firebase
+    func firebaseAuthWithCredential(_ credential: AuthCredential) {
         
         // authenticate with Firebase using the Firebase credential
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print("User unable to authenticate with Firebase - \(error.localizedDescription)")
-                return
             }
-            print("User successfully authenticated with Firebase")
+            else {
+                print("User successfully authenticated with Firebase")
+                guard let user = user else { return }
+                self.storeUserIDInKeyChain(userID: user.uid)
+            }
         }
     }
+    
+    //MARK: - Save User ID in Keychain
+    func storeUserIDInKeyChain(userID: String) {
+       let keychain = KeychainSwift()
+       keychain.set(userID, forKey: KEY_UID)
+    }
+
     
     //MARK: - Email and Password Validation
 
@@ -287,7 +311,7 @@ extension LoginVC: LoginButtonDelegate {
              the facebook access token for the signed-in user is used to create a Firebase credential
             */
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-            firebaseAuthWithFacebook(credential)
+            firebaseAuthWithCredential(credential)
         }
     }
 

@@ -13,4 +13,5 @@ target 'SocialNetwork' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'KeychainSwift', '~> 10.0'
 end
