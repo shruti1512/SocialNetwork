@@ -37,6 +37,7 @@ class LoginVC: UIViewController {
         let userID = keychain.get(KEY_UID)
         if userID != nil {
             print("userID: \(String(describing: userID))")
+            moveToFeedScreen()
         }
     }
     
@@ -75,6 +76,10 @@ class LoginVC: UIViewController {
 //        }
 //        else {
 //        }
+    }
+    
+    func moveToFeedScreen() {
+        performSegue(withIdentifier: "FeedVC", sender: nil)
     }
     
     //MARK: - Keyboard Show/Hide Notifications Handling
@@ -157,6 +162,7 @@ class LoginVC: UIViewController {
                     print("user email: \(String(describing: userObj.email))")
                     guard let user = user else {return}
                     self.storeUserIDInKeyChain(userID: user.uid)
+                    self.moveToFeedScreen()
                 }
             }
         }
@@ -171,6 +177,7 @@ class LoginVC: UIViewController {
                 print("user email: \(String(describing: user?.email))")
                 guard let user = user else {return}
                 self.storeUserIDInKeyChain(userID: user.uid)
+                self.moveToFeedScreen()
             }
             else {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
@@ -216,6 +223,7 @@ class LoginVC: UIViewController {
                 print("User successfully authenticated with Firebase")
                 guard let user = user else { return }
                 self.storeUserIDInKeyChain(userID: user.uid)
+                self.moveToFeedScreen()
             }
         }
     }

@@ -18,6 +18,5 @@ extension DropShadow where Self: UIView {
         layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         layer.shadowRadius = 5.0
-        layer.shouldRasterize = true
     }
 }

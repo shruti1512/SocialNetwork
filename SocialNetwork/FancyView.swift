@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewHeader: UIView, DropShadow {
+class FancyView: UIView, DropShadow {
 
     override func awakeFromNib() {
         super.awakeFromNib()
