@@ -21,11 +21,12 @@
 		335E080F204B267300608C66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E080E204B267300608C66 /* Constants.swift */; };
 		33AF4723204F694100867B13 /* MaterialDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AF4722204F694100867B13 /* MaterialDesignView.swift */; };
 		33AF4726204F6C0000867B13 /* DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AF4725204F6C0000867B13 /* DropShadow.swift */; };
-		BF750695828CE63BFDE5F06F /* Pods_SocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C64FB71011AAF42CAA8CD /* Pods_SocialNetwork.framework */; };
+		33C4B594205087B700F3C587 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4B593205087B700F3C587 /* Post.swift */; };
+		33C4B59620508A1400F3C587 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4B59520508A1400F3C587 /* DataService.swift */; };
+		DB4ABC54A38FF6CB1E8F3874 /* Pods_SocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B0C29CC0AD52EC178F72F8 /* Pods_SocialNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C6C64FB71011AAF42CAA8CD /* Pods_SocialNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3304E1C5204E602300FE1B59 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		332112EA2040E5D5008F99F7 /* SocialNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332112ED2040E5D5008F99F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +43,11 @@
 		335E080E204B267300608C66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		33AF4722204F694100867B13 /* MaterialDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDesignView.swift; sourceTree = "<group>"; };
 		33AF4725204F6C0000867B13 /* DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropShadow.swift; sourceTree = "<group>"; };
-		814C6926850F80F3C15552C1 /* Pods-SocialNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.debug.xcconfig"; sourceTree = "<group>"; };
-		8FC8942F36DDD012BC664475 /* Pods-SocialNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.release.xcconfig"; sourceTree = "<group>"; };
+		33C4B593205087B700F3C587 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		33C4B59520508A1400F3C587 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		452876FBF449D2433AF50374 /* Pods-SocialNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.release.xcconfig"; sourceTree = "<group>"; };
+		6DA57D121A646E2BD0F05EF0 /* Pods-SocialNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.debug.xcconfig"; sourceTree = "<group>"; };
+		B4B0C29CC0AD52EC178F72F8 /* Pods_SocialNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,28 +55,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF750695828CE63BFDE5F06F /* Pods_SocialNetwork.framework in Frameworks */,
+				DB4ABC54A38FF6CB1E8F3874 /* Pods_SocialNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BC05D1360AE8D7048797421 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C6C64FB71011AAF42CAA8CD /* Pods_SocialNetwork.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		332112E12040E5D5008F99F7 = {
 			isa = PBXGroup;
 			children = (
 				332112EC2040E5D5008F99F7 /* SocialNetwork */,
 				332112EB2040E5D5008F99F7 /* Products */,
-				9F4F7D788D9BD275DDA776B9 /* Pods */,
-				1BC05D1360AE8D7048797421 /* Frameworks */,
+				3829BDB9549A934277993449 /* Pods */,
+				486D7B8B043FB2B415CC54F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +83,7 @@
 		332112EC2040E5D5008F99F7 /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				33C4B59720508A4B00F3C587 /* Services */,
 				33AF4724204F6BF600867B13 /* Protocol */,
 				33AF4721204F692600867B13 /* Extension */,
 				335E080D204B266500608C66 /* Utils */,
@@ -114,6 +111,7 @@
 		33A786BA2040E938000B6EE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				33C4B593205087B700F3C587 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -154,13 +152,29 @@
 			name = Protocol;
 			sourceTree = "<group>";
 		};
-		9F4F7D788D9BD275DDA776B9 /* Pods */ = {
+		33C4B59720508A4B00F3C587 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				814C6926850F80F3C15552C1 /* Pods-SocialNetwork.debug.xcconfig */,
-				8FC8942F36DDD012BC664475 /* Pods-SocialNetwork.release.xcconfig */,
+				33C4B59520508A1400F3C587 /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		3829BDB9549A934277993449 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6DA57D121A646E2BD0F05EF0 /* Pods-SocialNetwork.debug.xcconfig */,
+				452876FBF449D2433AF50374 /* Pods-SocialNetwork.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		486D7B8B043FB2B415CC54F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4B0C29CC0AD52EC178F72F8 /* Pods_SocialNetwork.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,12 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 332112FC2040E5D5008F99F7 /* Build configuration list for PBXNativeTarget "SocialNetwork" */;
 			buildPhases = (
-				DB4F4509B8C8CD2FD6D0F2CE /* [CP] Check Pods Manifest.lock */,
+				FCB40A6C5F27843C4995DC7F /* [CP] Check Pods Manifest.lock */,
 				332112E62040E5D5008F99F7 /* Sources */,
 				332112E72040E5D5008F99F7 /* Frameworks */,
 				332112E82040E5D5008F99F7 /* Resources */,
-				31454F92E197A8EA0B8F1EB8 /* [CP] Embed Pods Frameworks */,
-				2F2F53A6285DD8CE7F908160 /* [CP] Copy Pods Resources */,
+				D0B6E5D7DDE5A65C665158AF /* [CP] Embed Pods Frameworks */,
+				5841A77980FEF6E3BD44FA5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,7 +251,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F2F53A6285DD8CE7F908160 /* [CP] Copy Pods Resources */ = {
+		5841A77980FEF6E3BD44FA5B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,7 +266,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		31454F92E197A8EA0B8F1EB8 /* [CP] Embed Pods Frameworks */ = {
+		D0B6E5D7DDE5A65C665158AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,7 +306,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DB4F4509B8C8CD2FD6D0F2CE /* [CP] Check Pods Manifest.lock */ = {
+		FCB40A6C5F27843C4995DC7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,7 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				33AF4726204F6C0000867B13 /* DropShadow.swift in Sources */,
+				33C4B594205087B700F3C587 /* Post.swift in Sources */,
 				332112F02040E5D5008F99F7 /* LoginVC.swift in Sources */,
+				33C4B59620508A1400F3C587 /* DataService.swift in Sources */,
 				335E080C204B25E200608C66 /* CustomTextField.swift in Sources */,
 				33AF4723204F694100867B13 /* MaterialDesignView.swift in Sources */,
 				332112EE2040E5D5008F99F7 /* AppDelegate.swift in Sources */,
@@ -461,7 +477,7 @@
 		};
 		332112FD2040E5D5008F99F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 814C6926850F80F3C15552C1 /* Pods-SocialNetwork.debug.xcconfig */;
+			baseConfigurationReference = 6DA57D121A646E2BD0F05EF0 /* Pods-SocialNetwork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7N7R2P8E43;
@@ -476,7 +492,7 @@
 		};
 		332112FE2040E5D5008F99F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FC8942F36DDD012BC664475 /* Pods-SocialNetwork.release.xcconfig */;
+			baseConfigurationReference = 452876FBF449D2433AF50374 /* Pods-SocialNetwork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7N7R2P8E43;

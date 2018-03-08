@@ -161,7 +161,7 @@ class LoginVC: UIViewController {
                     print("user name: \(String(describing: userObj.displayName))")
                     print("user email: \(String(describing: userObj.email))")
                     guard let user = user else {return}
-                    self.storeUserIDInKeyChain(userID: user.uid)
+                    self.completeSignIn(userID: user.uid, userProvider: user.providerID)
                     self.moveToFeedScreen()
                 }
             }
@@ -176,7 +176,7 @@ class LoginVC: UIViewController {
                 print("user name: \(String(describing: user?.displayName))")
                 print("user email: \(String(describing: user?.email))")
                 guard let user = user else {return}
-                self.storeUserIDInKeyChain(userID: user.uid)
+                self.completeSignIn(userID: user.uid, userProvider: user.providerID)
                 self.moveToFeedScreen()
             }
             else {
@@ -222,16 +222,20 @@ class LoginVC: UIViewController {
             else {
                 print("User successfully authenticated with Firebase")
                 guard let user = user else { return }
-                self.storeUserIDInKeyChain(userID: user.uid)
+                self.completeSignIn(userID: user.uid, userProvider: credential.provider)
                 self.moveToFeedScreen()
             }
         }
     }
     
-    //MARK: - Save User ID in Keychain
-    func storeUserIDInKeyChain(userID: String) {
+    //MARK: - Save User ID in Keychain and Save User In Database
+    func completeSignIn(userID: String, userProvider: String) {
        let keychain = KeychainSwift()
        keychain.set(userID, forKey: KEY_UID)
+        
+        //Add the user in FIRDatabase
+        let userData = ["provider": userProvider]
+        DataService.ds.createFirebaseDBUser(uid: userID, userData: userData)
     }
 
     
