@@ -20,6 +20,9 @@ class FeedVC: UIViewController, UITableViewDataSource {
     var postCaption: String!
 
     var postsArray = [Post]()
+    
+    //When you define a static var/let into a class (or struct), that information will be shared among all the instances (or values).
+    static let imageCache = NSCache<NSString, UIImage>()
 
     //MARK: - View LifeCycle Methods
 
@@ -47,7 +50,6 @@ class FeedVC: UIViewController, UITableViewDataSource {
             
             //Here we traverse the entire snapshot for all its children thus we get an array of DataSnapshot as each child is also a DataSnapshot and then we create Post object using value of each snapshot
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                self.postsArray = []
                 for snap in snapshot {
                     let post_key = snap.key
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
@@ -114,7 +116,12 @@ class FeedVC: UIViewController, UITableViewDataSource {
         }
         
         let post = postsArray[indexPath.row]
-        feedCell.configureCell(postData: post)
+        if let postImg = FeedVC.imageCache.object(forKey: post.imageUrl! as NSString) {
+            feedCell.configureCell(postData:post, img:postImg)
+        }
+        else {
+            feedCell.configureCell(postData: post)
+        }
         return feedCell
     }
     

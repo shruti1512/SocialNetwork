@@ -11,10 +11,10 @@ import Foundation
 struct Post {
     
     // MARK: - Properties
-    private (set) var caption = ""
-    private (set) var imageUrl = ""
-    private (set) var likes:Int = 0
-    private (set) var postKey = ""
+    private (set) var caption: String?
+    private (set) var imageUrl: String?
+    private (set) var likes:Int?
+    private (set) var postKey: String?
     
     // MARK: - Initializers
     init(caption: String, imageUrl: String, likes: Int) {
