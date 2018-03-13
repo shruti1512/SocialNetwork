@@ -97,16 +97,16 @@
                                                         <rect key="frame" x="40" y="0.0" width="295" height="190"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wB8-m5-JkF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="295" height="41.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="295" height="47.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BGf-HP-pvw" customClass="CustomTextField" customModule="SocialNetwork" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="25"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="31"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irb-92-429">
-                                                                        <rect key="frame" x="0.0" y="25" width="295" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="31" width="295" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                         <color key="textColor" red="1" green="0.29925480199999999" blue="0.1925307044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -114,16 +114,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bet-mU-oB0">
-                                                                <rect key="frame" x="0.0" y="80" width="295" height="37.5"/>
+                                                                <rect key="frame" x="0.0" y="80" width="295" height="43.5"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yq-eF-iM6" customClass="CustomTextField" customModule="SocialNetwork" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="21"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="27"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGb-n8-9YL">
-                                                                        <rect key="frame" x="0.0" y="21" width="295" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="27" width="295" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                         <color key="textColor" red="1" green="0.29925480199999999" blue="0.1925307044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -260,10 +260,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-hs-Oj3" userLabel="AddPostView" customClass="FancyView" customModule="SocialNetwork" customModuleProvider="target">
-                                <rect key="frame" x="16" y="81" width="343" height="65"/>
+                                <rect key="frame" x="8" y="81" width="359" height="65"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-jb-ljf">
-                                        <rect key="frame" x="8" y="8" width="327" height="49"/>
+                                        <rect key="frame" x="8" y="8" width="343" height="49"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="OTR-sy-izQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
@@ -283,13 +283,13 @@
                                                 </connections>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-zh-eIJ" customClass="CustomTextField" customModule="SocialNetwork" customModuleProvider="target">
-                                                <rect key="frame" x="59" y="0.0" width="209" height="49"/>
+                                                <rect key="frame" x="59" y="0.0" width="225" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6E-cR-kke" userLabel="Add Post" customClass="FancyButton" customModule="SocialNetwork" customModuleProvider="target">
-                                                <rect key="frame" x="278" y="0.0" width="49" height="49"/>
+                                                <rect key="frame" x="294" y="0.0" width="49" height="49"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.20000000000000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="Fpv-1n-Iip"/>
@@ -319,7 +319,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="340" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VY2-xE-0Ip">
-                                <rect key="frame" x="0.0" y="162" width="375" height="505"/>
+                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="340" id="X1k-vu-Ufb" customClass="FeedCell" customModule="SocialNetwork" customModuleProvider="target">
@@ -430,11 +430,11 @@
                         <color key="backgroundColor" red="0.81865572929382324" green="0.83534353971481323" blue="0.8595847487449646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="jcd-hs-Oj3" firstAttribute="leading" secondItem="PfH-Oa-Gsi" secondAttribute="leading" constant="16" id="1hZ-62-QLa"/>
+                            <constraint firstItem="jcd-hs-Oj3" firstAttribute="leading" secondItem="PfH-Oa-Gsi" secondAttribute="leading" constant="8" id="1hZ-62-QLa"/>
                             <constraint firstAttribute="trailing" secondItem="VY2-xE-0Ip" secondAttribute="trailing" id="HX6-u5-DB1"/>
                             <constraint firstItem="LM1-2J-Bi8" firstAttribute="top" secondItem="PfH-Oa-Gsi" secondAttribute="top" id="JfU-KG-KDN"/>
-                            <constraint firstItem="VY2-xE-0Ip" firstAttribute="top" secondItem="jcd-hs-Oj3" secondAttribute="bottom" constant="16" id="KlQ-8O-xrX"/>
-                            <constraint firstAttribute="trailing" secondItem="jcd-hs-Oj3" secondAttribute="trailing" constant="16" id="d5W-du-T3i"/>
+                            <constraint firstItem="VY2-xE-0Ip" firstAttribute="top" secondItem="jcd-hs-Oj3" secondAttribute="bottom" constant="8" id="KlQ-8O-xrX"/>
+                            <constraint firstAttribute="trailing" secondItem="jcd-hs-Oj3" secondAttribute="trailing" constant="8" id="d5W-du-T3i"/>
                             <constraint firstItem="VY2-xE-0Ip" firstAttribute="leading" secondItem="PfH-Oa-Gsi" secondAttribute="leading" id="d9e-et-lr6"/>
                             <constraint firstItem="LM1-2J-Bi8" firstAttribute="leading" secondItem="PfH-Oa-Gsi" secondAttribute="leading" id="gAe-Yj-Z86"/>
                             <constraint firstItem="jcd-hs-Oj3" firstAttribute="top" secondItem="LM1-2J-Bi8" secondAttribute="bottom" constant="16" id="jo5-ao-spk"/>
@@ -444,7 +444,8 @@
                     </view>
                     <connections>
                         <outlet property="addPostImgView" destination="OTR-sy-izQ" id="tIH-Bx-OSf"/>
-                        <outlet property="tblView" destination="VY2-xE-0Ip" id="crb-mx-e6w"/>
+                        <outlet property="captionField" destination="T8V-zh-eIJ" id="EOY-Fr-Z4g"/>
+                        <outlet property="tblView" destination="VY2-xE-0Ip" id="Pau-OT-Xjw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n29-de-8pH" userLabel="First Responder" sceneMemberID="firstResponder"/>

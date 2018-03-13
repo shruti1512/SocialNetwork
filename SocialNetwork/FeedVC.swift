@@ -13,12 +13,12 @@ import Firebase
 class FeedVC: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var captionField: UITextField!
+
     @IBOutlet weak var addPostImgView: UIImageView!
     var imagePicker: UIImagePickerController!
     
-    var postImage:UIImage!
-    var postCaption: String!
-
+    var postImage:UIImage?
     var postsArray = [Post]()
     
     //When you define a static var/let into a class (or struct), that information will be shared among all the instances (or values).
@@ -33,6 +33,7 @@ class FeedVC: UIViewController, UITableViewDataSource {
         tblView.dataSource = self
         
         imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
         getUserPosts()
@@ -98,6 +99,35 @@ class FeedVC: UIViewController, UITableViewDataSource {
     @IBAction func addPostTapped(_ sender: Any) {
         
         //Create a POST record in Firebase Database
+        guard let captionText = captionField.text, !captionText.isEmpty else {
+            print("Caption cannot be empty")
+            return
+        }
+        
+        if postImage == nil {
+            print("Image cannot be empty")
+            return
+        }
+        
+        uploadCaptionImageToFirebaseCloudStorage()
+        
+    }
+    
+    func uploadCaptionImageToFirebaseCloudStorage() {
+    
+        let imageUid = NSUUID().uuidString
+        let imgData = UIImageJPEGRepresentation(postImage!, 0.2)
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        DataService.ds.REF_IMAGES.child(imageUid).putData(imgData!, metadata: metaData) { (metadata, error) in
+            self.postImage = nil
+            self.addPostImgView.image = UIImage(named:"add-image")
+            self.captionField.text = nil
+            if let error = error {
+                print("Unable to upload image on Google Cloud \(error.localizedDescription)")
+                return
+            }
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -150,10 +180,6 @@ extension FeedVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
 
 //MARK: - UITextFieldDelegate
 extension FeedVC: UITextFieldDelegate {
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        postCaption = textField.text
-    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
