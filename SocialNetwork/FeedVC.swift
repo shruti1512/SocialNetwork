@@ -21,6 +21,8 @@ class FeedVC: UIViewController, UITableViewDataSource {
     var postImage:UIImage?
     var postsArray = [Post]()
     
+    var currentPost: Post!
+
     //When you define a static var/let into a class (or struct), that information will be shared among all the instances (or values).
     static let imageCache = NSCache<NSString, UIImage>()
 
@@ -36,35 +38,14 @@ class FeedVC: UIViewController, UITableViewDataSource {
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
-        getUserPosts()
-    }
-
-    func getUserPosts() {
-        
-        //We observe an event to fetch data for Posts using observe method and receive the callback in snapshot object of FIRDataSnapshot
-        DataService.ds.REF_POSTS.observe(DataEventType.value, with: { (snapshot) in
-            
-            print(snapshot.value!)
-            
-            /* A FIRDataSnapshot contains data from a Firebase Database location. Any time you read Firebase data, you receive the data as a FIRDataSnapshot.
-            FIRDataSnapshots are passed to the blocks you attach with observeEventType:withBlock: or observeSingleEvent:withBlock:. */
-            
-            //Here we traverse the entire snapshot for all its children thus we get an array of DataSnapshot as each child is also a DataSnapshot and then we create Post object using value of each snapshot
-            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshot {
-                    let post_key = snap.key
-                    if let postDict = snap.value as? Dictionary<String, AnyObject> {
-                        let post = Post(postKey: post_key, postData: postDict)
-                        self.postsArray.append(post)
-                    }
-                }
-            }
+        DataService.ds.getPosts { (postArray) -> () in
+            self.postsArray = []
+            self.postsArray.append(contentsOf: postArray)
+            let offset = self.tblView.contentOffset
             self.tblView.reloadData()
-
-            DispatchQueue.main.async {
-                self.tblView.reloadData()
-            }
-        })
+            //self.tblView.layoutIfNeeded()
+            self.tblView.setContentOffset(offset, animated: false)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,26 +89,24 @@ class FeedVC: UIViewController, UITableViewDataSource {
             print("Image cannot be empty")
             return
         }
+        else {
         
-        uploadCaptionImageToFirebaseCloudStorage()
-        
-    }
-    
-    func uploadCaptionImageToFirebaseCloudStorage() {
-    
-        let imageUid = NSUUID().uuidString
-        let imgData = UIImageJPEGRepresentation(postImage!, 0.2)
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpeg"
-        DataService.ds.REF_IMAGES.child(imageUid).putData(imgData!, metadata: metaData) { (metadata, error) in
-            self.postImage = nil
-            self.addPostImgView.image = UIImage(named:"add-image")
-            self.captionField.text = nil
-            if let error = error {
-                print("Unable to upload image on Google Cloud \(error.localizedDescription)")
-                return
-            }
+            DataService.ds.uploadImageToFirebaseClousStorage(image: postImage!, completion: { (downloadUrl) in
+                
+                let post: Dictionary<String, AnyObject> = [
+                    "caption": captionText as AnyObject,
+                    "imageUrl": downloadUrl as AnyObject,
+                    "likes": 0 as AnyObject]
+                
+                DataService.ds.addPostDataToFirebase(post: post){ () -> () in
+                    self.postImage = nil
+                    self.addPostImgView.image = UIImage(named:"add-image")
+                    self.captionField.text = ""
+                    self.tblView.reloadData()
+                }
+            })
         }
+        
     }
     
     //MARK: - UITableViewDataSource
@@ -186,7 +165,6 @@ extension FeedVC: UITextFieldDelegate {
         return true
     }
 }
-
 
 
 

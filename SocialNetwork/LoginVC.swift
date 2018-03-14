@@ -35,6 +35,7 @@ class LoginVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let keychain = KeychainSwift()
         let userID = keychain.get(KEY_UID)
+        
         if userID != nil {
             print("userID: \(String(describing: userID))")
             moveToFeedScreen()

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Post {
     
@@ -15,6 +16,10 @@ struct Post {
     private (set) var imageUrl: String?
     private (set) var likes:Int?
     private (set) var postKey: String?
+    var postRef: DatabaseReference {
+        let postRef = DataService.ds.REF_POSTS.child(postKey!)
+        return postRef
+    }
     
     // MARK: - Initializers
     init(caption: String, imageUrl: String, likes: Int) {
@@ -36,5 +41,21 @@ struct Post {
         if let likes = postData["likes"] as? Int {
             self.likes = likes
         }
+    }
+    
+    /* We have to use the mutating keyword – when we are changing the variables defined in our struct! */
+    mutating func adjustLikes(addLike: Bool) {
+        if addLike {
+            likes = likes! + 1
+        }
+        else {
+            var numLikes = likes!
+            numLikes = numLikes - 1
+
+            likes = numLikes > 1 ? numLikes : 0
+        }
+        
+        //Here we update the value of 'likes' child in our 'post' child of 'posts' referance
+        postRef.child("likes").setValue(likes)
     }
 }
