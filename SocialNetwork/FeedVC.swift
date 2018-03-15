@@ -40,7 +40,7 @@ class FeedVC: UIViewController, UITableViewDataSource {
         
         DataService.ds.getPosts { (postArray) -> () in
             self.postsArray = []
-            self.postsArray.append(contentsOf: postArray)
+            self.postsArray.append(contentsOf: postArray.reversed())
             let offset = self.tblView.contentOffset
             self.tblView.reloadData()
             //self.tblView.layoutIfNeeded()
@@ -96,7 +96,8 @@ class FeedVC: UIViewController, UITableViewDataSource {
                 let post: Dictionary<String, AnyObject> = [
                     "caption": captionText as AnyObject,
                     "imageUrl": downloadUrl as AnyObject,
-                    "likes": 0 as AnyObject]
+                    "likes": 0 as AnyObject,
+                    "timestamp": ServerValue.timestamp() as AnyObject]
                 
                 DataService.ds.addPostDataToFirebase(post: post){ () -> () in
                     self.postImage = nil

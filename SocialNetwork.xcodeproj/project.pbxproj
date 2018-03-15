@@ -23,6 +23,7 @@
 		33AF4726204F6C0000867B13 /* DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AF4725204F6C0000867B13 /* DropShadow.swift */; };
 		33C4B594205087B700F3C587 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4B593205087B700F3C587 /* Post.swift */; };
 		33C4B59620508A1400F3C587 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4B59520508A1400F3C587 /* DataService.swift */; };
+		33DECA52205A325D003C64B6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DECA51205A325D003C64B6 /* AuthService.swift */; };
 		DB4ABC54A38FF6CB1E8F3874 /* Pods_SocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B0C29CC0AD52EC178F72F8 /* Pods_SocialNetwork.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		33AF4725204F6C0000867B13 /* DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropShadow.swift; sourceTree = "<group>"; };
 		33C4B593205087B700F3C587 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		33C4B59520508A1400F3C587 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		33DECA51205A325D003C64B6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		452876FBF449D2433AF50374 /* Pods-SocialNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.release.xcconfig"; sourceTree = "<group>"; };
 		6DA57D121A646E2BD0F05EF0 /* Pods-SocialNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetwork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork.debug.xcconfig"; sourceTree = "<group>"; };
 		B4B0C29CC0AD52EC178F72F8 /* Pods_SocialNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				33C4B59520508A1400F3C587 /* DataService.swift */,
+				33DECA51205A325D003C64B6 /* AuthService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				33C4B59620508A1400F3C587 /* DataService.swift in Sources */,
 				335E080C204B25E200608C66 /* CustomTextField.swift in Sources */,
 				33AF4723204F694100867B13 /* MaterialDesignView.swift in Sources */,
+				33DECA52205A325D003C64B6 /* AuthService.swift in Sources */,
 				332112EE2040E5D5008F99F7 /* AppDelegate.swift in Sources */,
 				3304E1C6204E602300FE1B59 /* FeedVC.swift in Sources */,
 				335E080F204B267300608C66 /* Constants.swift in Sources */,

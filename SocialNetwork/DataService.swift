@@ -79,7 +79,7 @@ class DataService {
     func getPosts(completion: @escaping ([Post]) -> Void) {
         
         //We observe an event to fetch data for Posts using observe method and receive the callback in snapshot object of FIRDataSnapshot
-        REF_POSTS.observe(DataEventType.value, with: { (snapshot) in
+        REF_POSTS.queryOrdered(byChild: "timestamp").observe(DataEventType.value, with: { (snapshot) in
             
             print(snapshot.value!)
             
