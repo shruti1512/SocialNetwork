@@ -33,6 +33,9 @@ class LoginVC: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        guard Auth.auth().currentUser != nil else { return } // to get the current signed-in user
+        
         let keychain = KeychainSwift()
         let userID = keychain.get(KEY_UID)
         
@@ -69,14 +72,6 @@ class LoginVC: UIViewController {
         
         emailTextField.delegate = self
         pswdTextField.delegate = self
-        
-        /* Your app can only have one person logged in at a time. We represent each person logged into your app with AccessToken.current. The LoginManager of Facebook SDK sets this token for you and when it sets current it also automatically writes it to a keychain cache. The AccessToken contains userId which is used to identify the user.
-         */
-//        if let accessToken = AccessToken.current {
-//            // User is logged in, use 'accessToken' here.
-//        }
-//        else {
-//        }
     }
     
     func moveToFeedScreen() {
@@ -131,62 +126,38 @@ class LoginVC: UIViewController {
 
     @IBAction func signInBtnTapped(_ sender: Any) {
         
-        guard let email = emailTextField.text, let pswd = pswdTextField.text else { return}
-        
-        let emailValidationStatus = checkEmailAddressValidation()
-        let pswdValidationStatus = checkPasswordValidation()
-        
-        if !emailValidationStatus || !pswdValidationStatus {
+        guard let email = emailTextField.text, email.count>0, let pswd = pswdTextField.text, pswd.count>0 else {
+            self.showAlertView(withTitle: "Username and Password required", errmsg: "You must enter both a username and password.")
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: pswd) { (user, error) in
-            
-            if error != nil {
-                if let errCode = AuthErrorCode(rawValue: error!._code) {
-                    switch errCode {
-                    case .userNotFound:
-                        print("this email does not exist so first create an account for this user")
-                        self.createAccountForFirstTimeUser(withEmail: email, pswd: pswd)
-                    case .wrongPassword:
-                        print("Sorry, either your e-mail or password didn't match what we have on file. Try it again?" )
-                    default:
-                        print("Sign-In User Error: \(error!)")
-                    }
-                    
+        let isEmailValid = checkEmailAddressValidation()
+        let isPswdValid = checkPasswordValidation()
+        
+        if !isEmailValid || !isPswdValid {
+            return
+        }
+        else {
+            AuthService.auth_instance.login(withEmail: email, password: pswd, onComplete: { (errmsg, data) in
+                if errmsg != nil {
+                    self.showAlertView(withTitle: "Authentication failed.", errmsg: errmsg!)
                 }
-            }
-            else {
-                if let userObj = user {
+                else if let user = data {
                     print("User signed-in successfuly with email and password")
-                    print("user name: \(String(describing: userObj.displayName))")
-                    print("user email: \(String(describing: userObj.email))")
-                    guard let user = user else {return}
+                    print("user name: \(String(describing: user.displayName))")
+                    print("user email: \(String(describing: user.email))")
                     self.completeSignIn(userID: user.uid, userProvider: user.providerID)
                     self.moveToFeedScreen()
                 }
-            }
+            })
         }
     }
     
-    func createAccountForFirstTimeUser(withEmail email: String, pswd: String) {
-    
-        Auth.auth().createUser(withEmail: email, password: pswd, completion: { (user, error) in
-            if error == nil {
-                print("New User account created and signed-in successfuly")
-                print("user name: \(String(describing: user?.displayName))")
-                print("user email: \(String(describing: user?.email))")
-                guard let user = user else {return}
-                self.completeSignIn(userID: user.uid, userProvider: user.providerID)
-                self.moveToFeedScreen()
-            }
-            else {
-                if let errCode = AuthErrorCode(rawValue: error!._code) {
-                    print("Create User error: \(errCode)")
-                }
-            }
-        })
-
+    func showAlertView(withTitle title: String, errmsg: String) {
+        
+        let alert = UIAlertController(title: title, message: errmsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func facebookLoginBtnTapped(_ sender: Any) {
@@ -207,28 +178,15 @@ class LoginVC: UIViewController {
                  the facebook access token for the signed-in user is used to create a Firebase credential
                  */
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-                self.firebaseAuthWithCredential(credential)
+                AuthService.auth_instance.firebaseAuthWithCredential(credential, onComplete: { (errorMsg, data) in
+                    guard let user = data else { return }
+                    self.completeSignIn(userID: user.uid, userProvider: credential.provider)
+                    self.moveToFeedScreen()
+                })
             }
         }
     }
 
-    //MARK: - Authenticate with Firebase
-    func firebaseAuthWithCredential(_ credential: AuthCredential) {
-        
-        // authenticate with Firebase using the Firebase credential
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("User unable to authenticate with Firebase - \(error.localizedDescription)")
-            }
-            else {
-                print("User successfully authenticated with Firebase")
-                guard let user = user else { return }
-                self.completeSignIn(userID: user.uid, userProvider: credential.provider)
-                self.moveToFeedScreen()
-            }
-        }
-    }
-    
     //MARK: - Save User ID in Keychain and Save User In Database
     func completeSignIn(userID: String, userProvider: String) {
        let keychain = KeychainSwift()
@@ -304,6 +262,7 @@ class LoginVC: UIViewController {
 }
 
 
+/* This code is required when we are using Facebook Default Login Button
 //MARK: - LoginButtonDelegate
 
 extension LoginVC: LoginButtonDelegate {
@@ -333,22 +292,11 @@ extension LoginVC: LoginButtonDelegate {
     }
     
 }
+ */
 
 //MARK: - UITextFieldDelegate
 
 extension LoginVC: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
-        /*
-        if textField == emailTextField {
-            updateViewOnEmailValidation()
-        }
-        else if textField == pswdTextField {
-            updateViewOnPasswordValidation()
-        }
-         */
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
